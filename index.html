@@ -1,13 +1,26 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>My Test Site</title>
   </head>
   <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
+    <script>
+      function getAdvertisingId() {
+        console.log('getAdvertisingId called');
+        window.webkit.messageHandlers.getAdvertisingId.postMessage(null);
+      }
+
+      function setAdvertisingId(advertisingId) {
+        console.log('setAdvertisingId called with:', advertisingId);
+        // 受け取ったadvertisingIdを画面上に表示する
+        const adInfoElement = document.getElementById('ad-info');
+        adInfoElement.innerHTML = `Advertising ID: ${advertisingId}`;
+      }
+    </script>
   </body>
 </html>
